@@ -1,0 +1,61 @@
+
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+int main(void) {
+    int n, i, largest, number;
+    char text[500];
+    int vowels = 0;
+
+    printf("====================================\n");
+    printf(" LABORATORY EXERCISE #7-8\n");
+    printf("====================================\n");
+
+    // Part 1: Find the largest element
+    printf("\nPART 1: FINDING THE LARGEST ELEMENT\n");
+    printf("How many elements do you want to enter? ");
+    scanf("%d", &n);
+
+    if (n <= 0) {
+        printf("Invalid number of elements.\n");
+        return 1;
+    }
+
+    printf("Enter number 1: ");
+    scanf("%d", &largest);
+
+    for (i = 2; i <= n; i++) {
+        printf("Enter number %d: ", i);
+        scanf("%d", &number);
+
+        if (number > largest) {
+            largest = number;
+        }
+    }
+
+    printf("The largest element is: %d\n", largest);
+
+    // Clear the input buffer
+    int ch;
+    while ((ch = getchar()) != '\n' && ch != EOF) {
+    }
+
+    // Part 2: Count vowels in a string
+    printf("\nPART 2: COUNTING VOWELS IN A STRING\n");
+    printf("Enter a word or sentence: ");
+    fgets(text, sizeof(text), stdin);
+
+    for (i = 0; text[i] != '\0'; i++) {
+        char c = tolower((unsigned char)text[i]);
+
+        if (c == 'a' || c == 'e' || c == 'i' ||
+            c == 'o' || c == 'u') {
+            vowels++;
+        }
+    }
+
+    printf("Total number of vowels: %d\n", vowels);
+
+    return 0;
+}
